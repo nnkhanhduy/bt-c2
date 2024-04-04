@@ -1,0 +1,35 @@
+#include<iostream> 
+using namespace std;
+
+enum Color { red, white, blue }; 
+
+void sapXep(Color a[], int n) {
+    Color temp;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n - i - 1; j++) { 
+            if (a[j] > a[j + 1]) { 
+                temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    Color colors[] = { blue, red, blue, red, red, white, red, blue, white };
+    int n = sizeof(colors) / sizeof(colors[0]);
+    sapXep(colors, n);
+    cout << "Output: ";
+    for (int i = 0; i < n; ++i) {
+        if (colors[i] == red) {
+            cout << "red ";
+        } else if (colors[i] == white) {
+            cout << "white ";
+        } else if (colors[i] == blue) {
+            cout << "blue ";
+        }
+    }
+    cout << endl;
+    return 0;
+}
